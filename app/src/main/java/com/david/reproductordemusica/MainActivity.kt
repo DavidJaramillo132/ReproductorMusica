@@ -170,19 +170,18 @@ class MainActivity : AppCompatActivity() {
             try {
                 retriever.setDataSource(this, canciones[posicion])
                 val art = retriever.embeddedPicture
-                val albumImageView = findViewById<ImageView>(R.id.imagenMusic)
-
                 if (art != null) {
                     val bitmap = BitmapFactory.decodeByteArray(art, 0, art.size)
-                    albumImageView.setImageBitmap(bitmap)
+                    imagenAlbum.setImageBitmap(bitmap)
                 } else {
-                    albumImageView.setImageResource(R.drawable.ic_launcher_foreground) // una imagen por defecto
+                    imagenAlbum.setImageResource(R.drawable.ic_launcher_foreground) // imagen por defecto
                 }
             } catch (e: Exception) {
                 e.printStackTrace()
             } finally {
                 retriever.release()
             }
+
 
         } ?: run {
             songTitle.text = "Error al cargar canción."
