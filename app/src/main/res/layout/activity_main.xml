@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- Estamos usando Material design 3 -->
+<!-- Layout principal basado en ConstraintLayout -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,39 +11,32 @@
     android:background="?android:attr/colorBackground"
     tools:context=".MainActivity">
 
-    <!-- Imagen del álbum -->
+    <!-- Imagen del álbum dentro de una tarjeta con bordes redondeados -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/imagenMusic"
+        android:layout_width="240dp"
+        android:layout_height="240dp"
+        android:layout_marginTop="124dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:strokeColor="?attr/colorPrimary"
+        app:strokeWidth="2dp">
+
+        <!-- Imagen mostrada dentro de la tarjeta (portada de la canción) -->
+        <ImageView
+            android:id="@+id/imagenMusicView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="Imagen del álbum"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_launcher_foreground" />
+    </com.google.android.material.card.MaterialCardView>
 
     <!-- Título de la canción -->
-
-    <!-- Barra de progreso -->
-
-    <!-- Tiempo actual -->
-    <com.google.android.material.slider.Slider
-        android:id="@+id/seekBar"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:stepSize="1"
-        android:valueFrom="0"
-        android:valueTo="100"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/songTitle" />
-
-    <ImageButton
-        android:id="@+id/btnNext"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="4dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="Siguiente"
-        android:src="@drawable/arrow_forward"
-        android:tint="?attr/colorPrimary"
-        app:layout_constraintStart_toEndOf="@id/btnPause"
-        app:layout_constraintTop_toTopOf="@id/btnPrev" />
-
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/songTitle"
         android:layout_width="0dp"
@@ -56,19 +52,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imagenMusic" />
 
-    <ImageButton
-        android:id="@+id/btnPlay"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="4dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="Reproducir"
-        android:src="@drawable/play_arrow"
-        android:tint="?attr/colorPrimary"
-        app:layout_constraintStart_toEndOf="@id/btnPrev"
-        app:layout_constraintTop_toTopOf="@id/btnPrev" />
+    <!-- Barra de progreso de la canción (Slider de Material Design) -->
+    <com.google.android.material.slider.Slider
+        android:id="@+id/seekBar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:stepSize="1"
+        android:valueFrom="0"
+        android:valueTo="100"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/songTitle" />
 
+    <!-- Tiempo actual de reproducción (izquierda del slider) -->
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/tiempoActual"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        android:text="00:00"
+        android:textAppearance="?attr/textAppearanceLabelSmall"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/seekBar" />
+
+    <!-- Tiempo total de la canción (derecha del slider) -->
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/tiempoTotal"
         android:layout_width="wrap_content"
@@ -79,42 +89,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/seekBar" />
 
-    <ImageButton
-        android:id="@+id/btnPause"
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="4dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="Pausar"
-        android:src="@drawable/pause"
-        android:tint="?attr/colorPrimary"
-        app:layout_constraintStart_toEndOf="@id/btnPlay"
-        app:layout_constraintTop_toTopOf="@id/btnPrev" />
-
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/imagenMusic"
-        android:layout_width="240dp"
-        android:layout_height="240dp"
-        android:layout_marginTop="124dp"
-        app:cardCornerRadius="24dp"
-        app:cardElevation="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:strokeColor="?attr/colorPrimary"
-        app:strokeWidth="2dp">
-
-        <ImageView
-            android:id="@+id/imagenMusicView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:contentDescription="Imagen del álbum"
-            android:scaleType="centerCrop"
-            android:src="@drawable/ic_launcher_foreground" />
-    </com.google.android.material.card.MaterialCardView>
-
+    <!-- Botón anterior (canción previa) -->
     <ImageButton
         android:id="@+id/btnPrev"
         android:layout_width="64dp"
@@ -128,25 +103,46 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tiempoActual" />
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/tiempoActual"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
-        android:text="00:00"
-        android:textAppearance="?attr/textAppearanceLabelSmall"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/seekBar" />
+    <!-- Botón de reproducción -->
+    <ImageButton
+        android:id="@+id/btnPlay"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="4dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Reproducir"
+        android:src="@drawable/play_arrow"
+        android:tint="?attr/colorPrimary"
+        app:layout_constraintStart_toEndOf="@id/btnPrev"
+        app:layout_constraintTop_toTopOf="@id/btnPrev" />
 
-    <!-- Tiempo total -->
+    <!-- Botón de pausa -->
+    <ImageButton
+        android:id="@+id/btnPause"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="36dp"
+        android:layout_marginTop="4dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Pausar"
+        android:src="@drawable/pause"
+        android:tint="?attr/colorPrimary"
+        app:layout_constraintStart_toEndOf="@id/btnPlay"
+        app:layout_constraintTop_toTopOf="@id/btnPrev" />
 
-    <!-- Botón anterior -->
-
-    <!-- Botón play -->
-
-    <!-- Botón pausa -->
-
-    <!-- Botón siguiente -->
+    <!-- Botón siguiente (próxima canción) -->
+    <ImageButton
+        android:id="@+id/btnNext"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="4dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Siguiente"
+        android:src="@drawable/arrow_forward"
+        android:tint="?attr/colorPrimary"
+        app:layout_constraintStart_toEndOf="@id/btnPause"
+        app:layout_constraintTop_toTopOf="@id/btnPrev" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

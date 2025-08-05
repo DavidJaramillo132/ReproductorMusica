@@ -40,11 +40,16 @@ android {
 }
 
 dependencies {
+    // Biblioteca de Material Design 2 (Material Components) para temas, botones, sliders, etc.
     implementation("com.google.android.material:material:1.12.0")
-//    implementation("com.google.android.material:material:1.11.0")
+
+    // Compatibilidad con versiones antiguas de Android (soporte para ActionBar, etc.)
     implementation("androidx.appcompat:appcompat:1.6.1")
-//    implementation("com.google.android.material:material:1.10.0")
+
+    // Soporte para ConstraintLayout, usado para posicionar widgets en XML.
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
+
+    // Extensiones Kotlin para el core de Android, facilita operaciones comunes.
     implementation("androidx.core:core-ktx:1.12.0")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
