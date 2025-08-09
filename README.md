@@ -34,5 +34,3 @@ La aplicación requiere permisos para acceder al almacenamiento del dispositivo 
 ## Personalización
 Puedes modificar los recursos en la carpeta `res/` para cambiar la apariencia o agregar nuevas funcionalidades editando el código fuente en `java/com/david/reproductordemusica/`.
 
-## Licencia
-Este proyecto es de código abierto. Puedes modificarlo y distribuirlo según tus necesidades.
